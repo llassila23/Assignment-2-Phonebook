@@ -13,7 +13,7 @@ public class PBTest{
     public static void main(String[]args){
     
 // constructor for the linked list object
-PBmanager newPB = new PBmanager; 
+PBManager newPB = new PBManager(); 
 
 //add, delete, modify, or search for an entry 
 

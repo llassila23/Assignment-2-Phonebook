@@ -17,23 +17,15 @@ private String address ;
         PBObject next;
 // constructor
     public PBObject(String strLastName, String strFirstName, String strNumber, String strAddress, String strCity ){
-        this lastName = strLastName;
-        this firstName = strLastName;
-        this pNumber = strNumber;
-        this address = strAddress;
-        this city = strCity;
+        this.lastName = strLastName;
+        this.firstName = strLastName;
+        this.pNumber = strNumber;
+        this.address = strAddress;
+        this.city = strCity;
         this.next = null;
     }
 
-    public PBObject(String strLastName, String strFirstName, String strNumber, String strAddress, String strCity, PBObject next){
-        
-        this lastName = strLastName;
-        this firstName = strLastName;
-        this pNumber = strNumber;
-        this address = strAddress;
-        this city = strCity;
-        this.next = next;        
-    }
+
     public String toString(){
         
         return strLastName + strFirstName + strNumber + strAddress + strCity;

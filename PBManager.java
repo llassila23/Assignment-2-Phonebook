@@ -12,22 +12,29 @@ public class PBManager{
 
 // make a linked list
     public PBManager(){ // constructor class
-         pBook.add(
-            newPB.strLastName = "Welcome";
-            newPB.strFirstName = "to";
-            newPB.strNumber = "the";
-            newPB.strAddress = "phone";
-            newPB.strCity = "book";
-         )
-
-       
+         pBook.add("welcome");
+           /*  String strLastName = "Welcome";
+            String strFirstName = "to";
+            String strNumber = "the";
+            String strAddress = "phone";
+            String strCity = "book"; */
+         
 
     }
 
+    public void entry(String strLastName, String strFirstName, String strNumber, String strAddress, String strCity, PBObject next){
+        
+        String lastName = strLastName;
+        String firstName = strLastName;
+        String pNumber = strNumber;
+        String address = strAddress;
+        String city = strCity;
+        PBObject = next;        
+    }
 
 //add, delete, modify, or search for an entry 
 
-
+/* 
 // add method
     create a new element that has a name, address, number and city
 // delete method
@@ -45,5 +52,5 @@ public class PBManager{
             
         do a while loop to seach for it
             return the values of the elements that contains the search criteria
-
+*/
 }

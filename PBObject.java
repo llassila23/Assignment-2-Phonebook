@@ -5,28 +5,37 @@
 // This is the Object file, it will create an instance of the phonebook object to be acted upon
 // by the PBManager.java file
     
-// begin prototyping 
+public class PBObject{
 
-// use strings for all of them, easier to seach, can use one method for all
-private string first name
-private string last name
-private string phone number 
-private string city 
-private string address
+// use Strings for all of them, easier to seach, can use one method for all
+private String lastName ;
+private String firstName ;
+private String pNumber ;
+private String city ;
+private String address ;
 
-listNode next
+        PBObject next;
+// constructor
+    public PBObject(String strLastName, String strFirstName, String strNumber, String strAddress, String strCity ){
+        this lastName = strLastName;
+        this firstName = strLastName;
+        this pNumber = strNumber;
+        this address = strAddress;
+        this city = strCity;
+        this.next = null;
+    }
 
-constructor method(strings)
-    this firstname = stringVarFirstName
-    this lastname = stringVarLastName
-    this city = stringVarCity
-    this phone number = stringNumber
-    this address = stringAddress
-    this.next = null
-
-activeMethod(strings ListNode next)
-    this.strings = stringNames
-    this.next = next
-
-return as linked list
-
+    public PBObject(String strLastName, String strFirstName, String strNumber, String strAddress, String strCity, PBObject next){
+        
+        this lastName = strLastName;
+        this firstName = strLastName;
+        this pNumber = strNumber;
+        this address = strAddress;
+        this city = strCity;
+        this.next = next;        
+    }
+    public String toString(){
+        
+        return strLastName + strFirstName + strNumber + strAddress + strCity;
+    }
+}

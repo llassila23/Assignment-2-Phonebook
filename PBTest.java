@@ -5,10 +5,15 @@
 // This is the test file, it will have the main method that calls methods from PBManager
 
 // import a linked list api
+import java.util.LinkedList; // import linked list utility
+
+public class PBTest{
 
 // begin main method
+    public static void main(String[]args){
+    
 // constructor for the linked list object
-PBmanager newPB = new PBmanager;
+PBmanager newPB = new PBmanager; 
 
 //add, delete, modify, or search for an entry 
 
@@ -16,3 +21,5 @@ PBmanager newPB = new PBmanager;
 // delete method
 // edit method
 // search
+    }
+}

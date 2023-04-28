@@ -5,7 +5,7 @@
 // This is the test file, it will have the main method that calls methods from PBManager
 
 // import a linked list api
-import java.util.LinkedList; // import linked list utility
+//import java.util.LinkedList; // import linked list utility
 
 public class PBTest{
 
@@ -15,6 +15,8 @@ public class PBTest{
 // constructor for the linked list object
 PBManager newPB = new PBManager(); 
 
+
+System.out.println(newPB.pBook.toString());
 //add, delete, modify, or search for an entry 
 
 // add method

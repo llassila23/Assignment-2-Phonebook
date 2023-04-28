@@ -2,7 +2,7 @@
 // Class: CS 145
 // Assingment : Phonebook
 // 4/27/23
-// This is the Manager file, it will contain the methods for the program that will be acted on PBObject.java 
+// This is the Manager file, it will contain the methods for the program that will be acted on ListNode.java 
 // and be called by PBTest.java
 
 import java.util.LinkedList; // import linked list utility
@@ -13,24 +13,14 @@ public class PBManager{
 // make a linked list
     public PBManager(){ // constructor class
          pBook.add("welcome");
-           /*  String strLastName = "Welcome";
-            String strFirstName = "to";
-            String strNumber = "the";
-            String strAddress = "phone";
-            String strCity = "book"; */
+
+        
+
          
 
     }
 
-    public void entry(String strLastName, String strFirstName, String strNumber, String strAddress, String strCity, PBObject next){
-        
-        String lastName = strLastName;
-        String firstName = strLastName;
-        String pNumber = strNumber;
-        String address = strAddress;
-        String city = strCity;
-        PBObject = next;        
-    }
+
 
 //add, delete, modify, or search for an entry 
 

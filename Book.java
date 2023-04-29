@@ -6,27 +6,17 @@
 // by the PBManager.java file
 // https://www.youtube.com/watch?v=YQQio9BGWgs 
     
-public class Book{
+public class Book{ // Book should be a linked list 
 
 // use Strings for all of them, easier to seach, can use one method for all
     String data;
-    Book next;
+    
 // constructor
      //first element which will be at the back of the list as more are added
 
     public Book(String data){
         this.data = data;
-        this.next = null;
-    }
-
-    public Book(String data, Book next){ //second element with pointer
-        this.data = data;
-        this.next = next;
-    }
-
-
-    public String toString(String data){ // how the object is shown when printed
         
-        return data + " ";
     }
+
 }

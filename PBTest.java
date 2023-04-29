@@ -16,7 +16,11 @@ public class PBTest{
 PBManager newPB = new PBManager(); 
 
 
-System.out.println(newPB.pBook.toString());
+        newPB.newEntry(); // add a new 
+        System.out.println(newPB.print()); // print linked list
+
+
+
 //add, delete, modify, or search for an entry 
 
 // add method

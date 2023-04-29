@@ -6,20 +6,45 @@
 // and be called by PBTest.java
 
 import java.util.LinkedList; // import linked list utility
+import java.util.Scanner;
 
 public class PBManager{
-    LinkedList<String> pBook = new LinkedList <String>(); 
 
-// make a linked list
+    private int index; // this will be used for sorting the groups of data by person using modulus
+    private String entry; // data from scanner
+
+    Scanner input = new Scanner(System.in);
+
+
+    LinkedList<String> pBook = new LinkedList <String>(); 
+    
     public PBManager(){ // constructor class
          pBook.add("welcome");
-
         
-
-         
-
     }
 
+    public void add(String data){ // this will add a new element to the linked list with string data
+        pBook.add(data);
+
+    }
+    public LinkedList<String> print(){ // this returns the phone book to be printed to console
+        return pBook;
+    }
+
+    public void newEntry(){
+        System.out.println("Enter a First Name");
+            add(input.next());
+        System.out.println("Enter a Last Name");
+            add(input.next());
+        System.out.println("Enter a Phone Number with no spaces");
+           add(input.next());
+        System.out.println("Enter a Street Name");
+            add(input.next());
+        System.out.println("Enter a City");
+            add(input.next());
+            
+
+    }
 
 
 //add, delete, modify, or search for an entry 

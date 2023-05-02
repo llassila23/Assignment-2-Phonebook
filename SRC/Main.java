@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[]args) throws java.lang.NullPointerException{
 
         Manager book = new Manager();
-// basic header entry
+// basic header entry, keeps list from being empty -> simplifies later set/get caluclations
             book.add("Phone");
             book.add("Book");
             book.add("800-123-book");
@@ -20,7 +20,7 @@ public class Main {
             book.menu(); // run user interaction loop
 
             book.print();
-            System.out.println(book.get(2));
+            //System.out.println(book.get(2));
 
     }
     

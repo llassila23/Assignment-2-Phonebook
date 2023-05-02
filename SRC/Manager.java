@@ -27,9 +27,10 @@ public class Manager {
     public void Manager(){ // constructor
         front = null; // set front pointer = to null
     }
-
+// this method is a menu loop that contains a switch case for task methods.
+// PostCondtion: use will be done with program once this method is exited.
     public void menu(){
-        do{ 
+        do{  // print block to display menu options
         System.out.println();
         System.out.println("Enter 1 to add an entry");
         System.out.println("Enter 2 to display an entry");
@@ -37,27 +38,29 @@ public class Manager {
         System.out.println("Enter 4 to delete an entry");
         System.out.println("Enter 5 to quit");
     
-        choice = input.nextInt();
+        choice = input.nextInt(); // user inputs int to make choice
 
-            switch(choice){
-                case 1:
+            switch(choice){ // task methods are called based on user's choice
+                case 1: // new entry to phone book
                     newEntry();
                     break;
-                case 2:
+                case 2: // find an entry based on search value, print it's contents
                     sIndex = search(); // takes user input, returns locatation as number relative to front = 0
                     index = section(sIndex); // finds what entry section search value is located in
-                    for( int i = index; i < (index+=4); i++){
-                        System.out.println(get(i));
+                    for( int i = index; i <= (index+4); i++){
+                        System.out.print(get(i) + " ");
                     }
-                 
                     break;
-                case 3:
+                case 3: // edit an entry based on a search value 
                     sIndex = search();
                     index = section(sIndex); // finds what entry section search value is located in
-                    for( int i = index; i < (index+=4); i++){
-                        System.out.println(get(i)); // print the entry to be edited
+                    for( int i = index; i <= (index+4); i++){
+                        System.out.print(get(i) + " "); // print the whole entry to be edited
                     }
+                    // lets user choose what part of entry to be edited.
                     index += editVal(); // integer that will be added to index, represent field to be edited
+                    edit(index); // find value and replace it.
+
                     break;   
                 case 4:
                     // search();
@@ -72,6 +75,8 @@ public class Manager {
 
     }// end menu method
 
+    // method to add a new entry, called by menu() case 1
+    // Postcondiion: 5 node entry will have been added to list
     public void newEntry(){
         System.out.println();
         System.out.println("Enter a First Name");
@@ -88,6 +93,7 @@ public class Manager {
 
 
 // fundamental methods start here
+    // print method, starts at front node, prints until next node is null.
     public void print(){
 
         ListNode current = front; // current node 
@@ -99,20 +105,23 @@ public class Manager {
             current = current.next; // advance current node
         }
     }
-
+    // add a new node to the list, called by newEntry() in menu()
+    //precondition: String entry contians string data.
     public void add(String entry){ // add data
         if(front==null){ // if the front node is empty, add data here
             front = new ListNode(entry);
 
-        }else{
+        }else{ // front contains data
             ListNode current = front; // set current node to first node
             while(current.next!= null){ // while pointer node is not null (aka end of list)
                 current = current.next; // advance current
             }    // end while
-            current.next = new ListNode(entry);
+            current.next = new ListNode(entry); // last node, add new node for new data
         }// if else
     } // end add
 
+    //method to return string value via an index value
+    // Precondition: index != zero, given by the default header entry in main
     public String get(int index){//search by location
         ListNode current = front; // start at front
 
@@ -120,14 +129,17 @@ public class Manager {
             for (int i = 1; i<index; i++){ // traverse until index is reached, start at 1, b.c of current= front
                 current = current.next;
             }// end for loop
-             entry = current.data; // set a string equal to the data at that index
-             break; // desired result
-        }// end while
+            
+                entry = current.data; // set a string equal to the data at that index
+                break; // desired result
+           
+        }// end outer while
         return entry;
     }// end get()
 // end fundamental methods
 
-
+    // search method to return an int sIndex where search value is located.
+    
     public int search(){ // return int to be used in get
         int sIndex = 0;
         System.out.println("Enter a name or number: ");
@@ -143,6 +155,8 @@ public class Manager {
 
     }// end search
 
+    // Helper method to subdivide data entries into groups of 5, based off where the search value was found
+    // returns int index, which is location of first value in that set of 5 entries
     public int section(int sIndex){ // want to find the first index value of a set of 5, 
         //given the value of a entry in that set
         if(sIndex>5){
@@ -158,17 +172,36 @@ public class Manager {
         return index;
     }
 
+    // helper method to return a numerical location of the value to be edited, where 0 is the first name 
+    // in a given entry. to be added to index to find value to replace.
     public int editVal(){ // returns numerical representation of the value to be edited
         
-        System.out.println("Enter 1 to edit First Name");
-        System.out.println("Enter 2 to edit Last Name");
-        System.out.println("Enter 3 to edit Phone Number");
-        System.out.println("Enter 4 to edit Street");
-        System.out.println("Enter 5 to edit City");
+        System.out.println("Enter 0 to edit First Name");
+        System.out.println("Enter 1 to edit Last Name");
+        System.out.println("Enter 2 to edit Phone Number");
+        System.out.println("Enter 3 to edit Street");
+        System.out.println("Enter 4 to edit City");
 
        int editVal = input.nextInt();
 
        return editVal;
+    }
+
+    // method that traverses linked list until index of desired data is reached
+    // then is replaced with user input.
+    //Pre: index has been correctly identified
+    // Post: entry at said index has been replaced.
+    public void edit(int index){
+        ListNode current = front;
+        for(int i = 1; i<index; i++ ){
+            current = current.next;
+        }
+
+        System.out.println("Current entry: " + current.data);
+        System.out.println("Enter replacement text: ");
+            current.data = input.next();
+        System.out.println("Entry has been replaced with: " + current.data);
+        return;
     }
 
     

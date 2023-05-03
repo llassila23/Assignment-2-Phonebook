@@ -31,12 +31,13 @@ public class Manager {
 // PostCondtion: use will be done with program once this method is exited.
     public void menu(){
         do{  // print block to display menu options
-        System.out.println();
+        System.out.println();// spacer
         System.out.println("Enter 1 to add an entry");
         System.out.println("Enter 2 to display an entry");
         System.out.println("Enter 3 to edit an entry");
         System.out.println("Enter 4 to delete an entry");
-        System.out.println("Enter 5 to quit");
+        System.out.println("Enter 5 to display all entries");
+        System.out.println("Enter 6 to quit");
     
         choice = input.nextInt(); // user inputs int to make choice
 
@@ -50,6 +51,7 @@ public class Manager {
                     for( int i = index; i <= (index+4); i++){
                         System.out.print(get(i) + " ");
                     }
+                    System.out.println(); // spacer
                     break;
                 case 3: // edit an entry based on a search value 
                     sIndex = search();
@@ -57,16 +59,30 @@ public class Manager {
                     for( int i = index; i <= (index+4); i++){
                         System.out.print(get(i) + " "); // print the whole entry to be edited
                     }
+                    System.out.println(); // spacer
                     // lets user choose what part of entry to be edited.
                     index += editVal(); // integer that will be added to index, represent field to be edited
                     edit(index); // find value and replace it.
 
                     break;   
                 case 4:
-                    // search();
-                    // delete
-                    break;
+                    sIndex = search();
+                    index = section(sIndex); // finds what entry section search value is located in
+                    System.out.println("The following line will be deleted");
+                    for( int i = index; i <= (index+4); i++){
+                        System.out.print(get(i) + " "); // print the whole entry to be deleted
+                    }
+                    System.out.println(); // spacer
+                    
+                        delete(index); // find entry and delete its contents (5 data nodes)
+                    
+                        break;
                 case 5:
+                    System.out.println(); // spacer
+                    print();
+                    break;
+
+                case 6:
                     System.out.println("Goodbye");
                     return; // EXIT MENU LOOP
 
@@ -76,9 +92,11 @@ public class Manager {
     }// end menu method
 
     // method to add a new entry, called by menu() case 1
+    // precondition: no spaces in the user entries
     // Postcondiion: 5 node entry will have been added to list
     public void newEntry(){
-        System.out.println();
+        
+        System.out.println();// spacer
         System.out.println("Enter a First Name");
             add(input.next());
         System.out.println("Enter a Last Name");
@@ -99,10 +117,13 @@ public class Manager {
         ListNode current = front; // current node 
 
         while (current!=null){ // while current node has data
-
-            System.out.println(current.data); // print
-
-            current = current.next; // advance current node
+            int i = 0; // counter
+            while(current!= null && i<5){ // acting as a for loop with the null condion
+                System.out.print(current.data + " "); // print
+                current = current.next; // advance current node
+                i++;
+            }
+            System.out.println(); // spacer
         }
     }
     // add a new node to the list, called by newEntry() in menu()
@@ -139,7 +160,7 @@ public class Manager {
 // end fundamental methods
 
     // search method to return an int sIndex where search value is located.
-    
+    // Note: returns last entry if search field is invalid
     public int search(){ // return int to be used in get
         int sIndex = 0;
         System.out.println("Enter a name or number: ");
@@ -175,6 +196,7 @@ public class Manager {
     // helper method to return a numerical location of the value to be edited, where 0 is the first name 
     // in a given entry. to be added to index to find value to replace.
     public int editVal(){ // returns numerical representation of the value to be edited
+        System.out.println(); // spacer
         
         System.out.println("Enter 0 to edit First Name");
         System.out.println("Enter 1 to edit Last Name");
@@ -196,13 +218,40 @@ public class Manager {
         for(int i = 1; i<index; i++ ){
             current = current.next;
         }
-
         System.out.println("Current entry: " + current.data);
         System.out.println("Enter replacement text: ");
             current.data = input.next();
         System.out.println("Entry has been replaced with: " + current.data);
         return;
     }
+
+    // delete an entry(series of nodes) given the starting point of the entry
+    // precondition: Index is set correctly ->
+    // and corresponds to start of entry (ex, 0, 6, 11, 16)
+    public void delete(int index){
+   
+        if(index == 0){
+            // special case: remove first element
+            front = front.next;
+        }else{
+            // removing elsewhere in the list
+            ListNode current = front; // start at front 
+        
+            if(current != null){ // traverse to entry to be deleted
+                for(int i = 1; i<(index-1); i++){ // advance one less
+                    // because next loop will advance two at a time
+                        current = current.next;
+                    }// end traverse for loop
+                
+                for(int j = 0; j<= 4; j++){ // delete loop
+                    current.next = current.next.next; // move pointer from 
+                    // next to the second next. effectively deleting first next
+                    
+                }// end delete loop
+            }// end if not null condition
+        }// end master if else
+
+    }// end delete method
 
     
 }

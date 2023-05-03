@@ -11,8 +11,8 @@ public class Main {
 
         Manager book = new Manager();
 // basic header entry, keeps list from being empty -> simplifies later set/get caluclations
-            book.add("Phone");
-            book.add("Book");
+            book.add("INFO");
+            book.add("CONTACT:");
             book.add("800-123-book");
             book.add("Bellingham");
             book.add("WA");
